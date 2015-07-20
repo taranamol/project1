@@ -1,11 +1,15 @@
 body {
-  background-color: #F4F4F2;
+  background-color: #D9C7B8;
   font-family: sans-serif;
 }
 
 .jumbotron {
-  background-color: #e0c0a0;
+  background-color: #F2C53D;
   text-align: center;
+}
+
+.navbar {
+  background-color: #F2F2F2;
 }
 
 @font-face{ 
