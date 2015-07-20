@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- custom styles -->
+  <link type="text/css" rel="stylesheet" href="public/styles/style.css">
+  <title> project one. </title>
+</head>
+
+<body>
+
+
+  <div class="jumbotron">
+    <h1>explore the depths of Granth.</h1>
+    <p>read | talk | discuss</p>
+    <!-- for a button:  -->
+    <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p> -->
+  </div>
+
+
+  <div class="navbar">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <p>  </p>
+      </div>
+    </nav>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+
+
+      <div class="col-md-8">
+        <div id="paurisTemplate">
+        <!-- the left side with Granth -->
+        <!-- data with the pauris will go here.  -->
+      <!--   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Sri_Guru_Granth_Sahib_Nishan.jpg/400px-Sri_Guru_Granth_Sahib_Nishan.jpg"> -->
+        </div>
+      </div>
+      
+
+
+
+      <!-- the right side with comment form-->      
+      <div class="col-md-4" id="submitForm">
+      <h1>thoughts?</h1>
+        
+        <form id="submitThought">
+        
+        <div class="form-group">
+          <input type="text" class="form-control" id="thoughtText" placeholder="what are your thoughts?" autofocus>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="btn btn-success" value="share your thoughts.">
+        </div>
+
+        </form>
+        
+      </div>
+     
+     
+      
+
+      <!-- right side with other comments -->
+      <div class="col-md-4" id="postedThoughts">
+        <h2>other thoughts.</h2>
+        <div id="listOfThoughts"></div>
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+  
+<script type="text/template" id="thoughtsTemplate">
+  <div class="thoughtsAppend">
+    <p>
+      <%= thoughtText %> 
+    </p>
+    <hr>
+  </div>
+</script>
+
+
+
+
+
+
+
+
+
+
+  <!-- jquery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+  <!-- underscore -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  
+  <!-- custom scripts -->
+  <script type="text/javascript" src="public/scripts/script.js"></script>
+  
+</body>
+</html>
+
