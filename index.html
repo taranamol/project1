@@ -30,42 +30,43 @@
 
   <div class="container">
     <div class="row">
+     
 
+     <div class="col-md-8">
       <!-- the left side with Granth -->
       <!-- data with the pauris will go here.  -->
-    <h2>pauris.</h2>
-      <div id="paurisList"></div>
-        
-      
-
+        <h2>pauris.</h2>
+        <div id="paurisList"></div>
     </div>
+
+    
   </div>
-
-  
-
-
-    <!-- jquery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-
-    <!-- bootstrap js -->
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-    <!-- underscore -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-
-    <!-- custom scripts -->
-    <script type="text/javascript" src="scripts/script.js"></script>
+</div>
 
 
-    <div class="col-md-8">
-      <script type="text/template" id="paurisTemplate">
-        <p>
-          <%= pid %> - <%= gurmukhi %> 
-        </p>
-      </script>
-    </div>
 
 
-  </body>
-  </html>
+<!-- jquery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+<!-- bootstrap js -->
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!-- underscore -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+<!-- custom scripts -->
+<script type="text/javascript" src="scripts/script.js"></script>
+
+
+<!-- PASSING THE PAURIS THROUGH THE TEMPLATE FROM DATABASE -->
+<script type="text/template" id="paurisTemplate">
+  <p>
+    <%= pid %> - <%= gurmukhi %> 
+  </p>
+</script>
+
+
+</body>
+</html>
 
