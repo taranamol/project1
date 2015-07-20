@@ -20,7 +20,13 @@ app.get('/', function(req, res) {
 });
 
 //connect to db called depthsofGranth
-mongoose.connect('mongodb://localhost/Granth');
+// mongoose.connect('mongodb://localhost/Granth');
+
+mongoose.connect(
+  process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/Granth'// plug in the db name you've been using
+);
 
 //APT routes
 
@@ -31,6 +37,8 @@ app.get('/pauris', function (req, res) {
   });
 });
 
-app.listen(3000, function () {
-  console.log('server started on locahost:3000');
-});
+// app.listen(3000, function () {
+//   console.log('server started on locahost:3000');
+// });
+
+app.listen(process.env.PORT || 3000);
