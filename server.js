@@ -14,13 +14,12 @@ app.use(express.static(__dirname + '/public'));
 // from mongoose & bring it back from db
 var Pauris = require('./models/pauris');
 
+var Thoughts = require('./models/thoughts');
+
 //this is going to send the html to the root
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
-
-//connect to db called depthsofGranth
-// mongoose.connect('mongodb://localhost/Granth');
 
 mongoose.connect(
   process.env.MONGOLAB_URI ||
@@ -28,7 +27,10 @@ mongoose.connect(
   'mongodb://localhost/Granth'// plug in the db name you've been using
 );
 
-//APT routes
+///////////////API ROUTES//////////////////
+
+
+///////////////PAURIS ROUTES////////////////
 
 //this is /get route which will get all the pauris in the server
 app.get('/pauris', function (req, res) {
@@ -37,8 +39,34 @@ app.get('/pauris', function (req, res) {
   });
 });
 
-// app.listen(3000, function () {
-//   console.log('server started on locahost:3000');
-// });
 
-app.listen(process.env.PORT || 3000);
+///////////////THOUGHTS ROUTES////////////////
+
+//this is /get route which will get all the thoughts in the server
+app.get('/thoughts', function (req, res) {
+  Thoughts.find(function (err, thoughts) {
+    res.json(thoughts);
+  });
+});
+
+app.post('/thoughts', function (req, res) {
+  var newThought = new Thought ({
+    thoughtText: req.body.thoughtText
+  });
+  newThought.save(function (err, savedThought) {
+    res.json(savedThought);
+  });
+});
+
+
+app.listen(process.env.PORT || 3000, function () {
+  console.log('server started on locahost:3000');
+  });
+
+
+
+
+
+
+
+

@@ -24,29 +24,57 @@ paurisTemplate: _.template($('#paurisTemplate').html()),
   paurisController.all();
 
 
-
 // APPENDING THE THOUGHTS ONTO THE PAGE
-// var thoughtsController = {
+var thoughtsController = {
 
-// thoughtsTemplate: _.template($('#thoughtsTemplate').html()),
+thoughtsTemplate: _.template($('#thoughtsTemplate').html()),
 
-//     all: function() {
-//       console.log("calling all");
-//       $.get('/thoughts', function(data) {
-//         var allThoughts = data;
-//         _.each(allThoughts, function(thoughts) {
-//           //append the thoughts so they appear on the page
-//           var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(thoughts));
-//           console.log($thoughtsHTML);
-//           $('#listOfThoughts').append($thoughtsHTML); 
-//           console.log(allThoughts);
-//         });
-//       });
-//     }
-//   };
+    all: function() {
+      console.log("calling all");
+      $.get('/thoughts', function(data) {
+        var allThoughts = data;
+        _.each(allThoughts, function(thoughts) {
+          //append the thoughts so they appear on the page
+          var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(thoughts));
+          console.log($thoughtsHTML);
+          $('#listOfThoughts').append($thoughtsHTML); 
+          console.log(allThoughts);
+        });
+      });
+    },
 
-//   thoughtsController.all();
+  create: function(newThought) {
+    var thoughtData = {thoughtText: newThought};
+    // this is creating a a request to the server to create a new thought 
+    $.post('/thoughts', thoughtData, function(data) {
+      //passing through the thoughtTemplate to show the thought on the page
+      var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(data));
+      $('#listOfThoughts').append($thoughtsHTML); 
+    });
+  },
+
+  setupView: function() {
+    //existing thoughts onto the page 
+    thoughtsController.all()
+
+    $('#listOfThoughts').on('submit', function(event) {
+      event.preventDefault();
+      var newThought = $('#newThought').val();
+      thoughtsController.create(newThought);
+    });
+  }
 
 
 
+// CLOSES THE THOUGHTSCONTROLLER
+}
+
+thoughtsController.setupView()
+
+
+//CLOSES THE WHOLE FUNCTION
 });
+
+
+
+
