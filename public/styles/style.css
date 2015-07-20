@@ -7,3 +7,13 @@ body {
   background-color: #e0c0a0;
   text-align: center;
 }
+
+@font-face{ 
+font-family: 'GurbaniAkharHeavyRegular';
+src: url('GURAKH_H.TTF') format('truetype')
+}
+
+#paurisList{
+font-family: 'GurbaniAkharHeavyRegular';
+font-size: 30px;
+}
