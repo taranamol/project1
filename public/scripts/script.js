@@ -45,6 +45,7 @@ thoughtsTemplate: _.template($('#thoughtsTemplate').html()),
 
   create: function(newThought) {
     var thoughtData = {thoughtText: newThought};
+    console.log(thoughtData);
     // this is creating a a request to the server to create a new thought 
     $.post('/thoughts', thoughtData, function(data) {
       //passing through the thoughtTemplate to show the thought on the page
@@ -57,10 +58,11 @@ thoughtsTemplate: _.template($('#thoughtsTemplate').html()),
     //existing thoughts onto the page 
     thoughtsController.all()
 
-    $('#listOfThoughts').on('submit', function(event) {
+    $('#submitThought').on('submit', function(event) {
       event.preventDefault();
-      var newThought = $('#newThought').val();
-      thoughtsController.create(newThought);
+      var thoughtText = $('#thoughtText').val();
+      console.log(thoughtText);
+      thoughtsController.create(thoughtText);
     });
   }
 

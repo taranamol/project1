@@ -3,11 +3,11 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 // define pauri schema
-var PaurisSchema = new Schema({
+var PauriSchema = new Schema({
   pid: Number,
   gurmukhi: String,
 });
 
 // create and export Pauri model
-var Pauris = mongoose.model('Pauris', PaurisSchema);
-module.exports = Pauris;
+var Pauri = mongoose.model('Pauri', PauriSchema);
+module.exports = Pauri;

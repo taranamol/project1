@@ -3,10 +3,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 // define thoguhts schema
-var ThoughtsSchema = new Schema({
+var ThoughtSchema = new Schema({
   thoughtText: String
 });
 
 // create and export Thoughts model
-var Thoughts = mongoose.model('Thoughts', ThoughtsSchema);
-module.exports = Thoughts;
+var Thought = mongoose.model('Thought', ThoughtSchema); 
+module.exports = Thought;

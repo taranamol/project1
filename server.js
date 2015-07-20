@@ -12,9 +12,9 @@ app.use(express.static(__dirname + '/public'));
 
 // connecting the pauris to the model which is going to grab the information 
 // from mongoose & bring it back from db
-var Pauris = require('./models/pauris');
+var Pauri = require('./models/pauri');
 
-var Thoughts = require('./models/thoughts');
+var Thought = require('./models/thought'); 
 
 //this is going to send the html to the root
 app.get('/', function(req, res) {
@@ -34,8 +34,8 @@ mongoose.connect(
 
 //this is /get route which will get all the pauris in the server
 app.get('/pauris', function (req, res) {
-  Pauris.find(function (err, pauris) {
-    res.json(pauris);
+  Pauri.find(function (err, pauri) {
+    res.json(pauri);
   });
 });
 
@@ -44,8 +44,8 @@ app.get('/pauris', function (req, res) {
 
 //this is /get route which will get all the thoughts in the server
 app.get('/thoughts', function (req, res) {
-  Thoughts.find(function (err, thoughts) {
-    res.json(thoughts);
+  Thought.find(function (err, thought) {
+    res.json(thought);
   });
 });
 
