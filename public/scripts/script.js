@@ -1,8 +1,7 @@
 $(function() {
 
-// //template: connecting the html & js
-// var thoughtsTemplate = _.template($('#thoughtsTemplate').html()); 
 
+// APPENDING THE PAURIS ONTO THE PAGE
 var paurisController = {
 
 paurisTemplate: _.template($('#paurisTemplate').html()),
@@ -23,6 +22,31 @@ paurisTemplate: _.template($('#paurisTemplate').html()),
   };
 
   paurisController.all();
+
+
+
+// APPENDING THE THOUGHTS ONTO THE PAGE
+// var thoughtsController = {
+
+// thoughtsTemplate: _.template($('#thoughtsTemplate').html()),
+
+//     all: function() {
+//       console.log("calling all");
+//       $.get('/thoughts', function(data) {
+//         var allThoughts = data;
+//         _.each(allThoughts, function(thoughts) {
+//           //append the thoughts so they appear on the page
+//           var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(thoughts));
+//           console.log($thoughtsHTML);
+//           $('#listOfThoughts').append($thoughtsHTML); 
+//           console.log(allThoughts);
+//         });
+//       });
+//     }
+//   };
+
+//   thoughtsController.all();
+
 
 
 });

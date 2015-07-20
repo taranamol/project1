@@ -24,7 +24,7 @@ mongoose.connect('mongodb://localhost/Granth');
 
 //APT routes
 
-//this is /get route which will get all the data in the server
+//this is /get route which will get all the pauris in the server
 app.get('/pauris', function (req, res) {
   Pauris.find(function (err, pauris) {
     res.json(pauris);

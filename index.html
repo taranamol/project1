@@ -28,23 +28,47 @@
   </div>
 
 
-  <!-- JAPJI SAHIB -->
   <div class="container">
     <div class="row">
-     
 
-     <div class="col-md-8">
-      <!-- the left side with Granth -->
+
+  <!--  LEFT SIDE WITH JAPJI SAHIB -->
+     <div class="col-md-7">
       <!-- data with the pauris will go here.  -->
       <h2>japji sahib.</h2>
       <div id="paurisList"></div>
     </div>
 
 
+  <!-- RIGHT SIDE WITH THE COMMENT FORM -->     
+      <div class="col-md-5" id="thoughtsForm">
+      <h1>thoughts?</h1>
+        <form id="submitThought">
+
+          <!-- COMMENT FORM --> 
+          <div class="form-group">
+            <input type="text" class="form-control" id="thoughtText" placeholder="what are your thoughts?" autofocus>
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+          <div class="form-group">
+            <input type="submit" class="btn btn-success" value="share your thoughts.">
+          </div>
+
+
+        </form>
+      </div>
+
+  <!-- RIGHT SIDE WITH POSTED THOUGHTS -->
+      <div class="col-md-5" id="postedThoughts">
+        <h2>other thoughts.</h2>
+        <div id="listOfThoughts"></div>
+      </div>
+   
+
+    <!-- END OF CONTAINER & ROW -->
+    </div>
   </div>
-</div>
-
-
 
 
 <!-- jquery -->
@@ -59,14 +83,19 @@
 <!-- custom scripts -->
 <script type="text/javascript" src="scripts/script.js"></script>
 
-
-<!-- PASSING THE PAURIS THROUGH THE TEMPLATE FROM DATABASE -->
+<!-- PASSING THE PAURIS FROM THE DATABASE THROUGH THE TEMPLATE ONTO THE PAGE -->
 <script type="text/template" id="paurisTemplate">
   <p>
     <%= pid %> - <%= gurmukhi %> 
   </p>
 </script>
 
+<!-- PASSING THE THOUGHTS THROUGH THE TEMPLATE ONTO THE PAGE -->
+<script type="text/template" id="thoughtsTemplate">
+  <p>
+    <%= thoughtText %> 
+  </p>
+</script>
 
 </body>
 </html>

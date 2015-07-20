@@ -1,10 +1,10 @@
 body {
-  background-color: #D9C7B8;
+  background-color: #F2F2F2;
   font-family: sans-serif;
 }
 
 .jumbotron {
-  background-color: #F2C53D;
+  background-color: #FFD34E;
   text-align: center;
 }
 
@@ -20,4 +20,11 @@ src: url('GURAKH_H.TTF') format('truetype')
 #paurisList{
 font-family: 'GurbaniAkharHeavyRegular';
 font-size: 20px;
+background-color: #F2F2F2; 
 }
+
+#thoughtsForm {
+  background-color: #105B63; 
+}
+
+
