@@ -54,6 +54,30 @@ thoughtsTemplate: _.template($('#thoughtsTemplate').html()),
     });
   },
 
+  // update: function(thoughtId, updatedThought) {
+  //   $.ajax({
+  //     type: 'PUT',
+  //     url: '/thoughts/' + thoughtId,
+  //     data: {
+  //       thoughtText: updatedThought
+  //     },
+  //     success: function(data) 
+  //       var updatedThought = data; 
+  //             // pass thought object through template and append to view
+  //       var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(data));
+  //       $('#thought-' + thoughtId).replaceWith($thoughtsHTML);
+  //     })
+  //   })
+
+
+
+
+
+
+
+
+  
+
   setupView: function() {
     //existing thoughts onto the page 
     thoughtsController.all()

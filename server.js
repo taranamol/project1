@@ -58,6 +58,16 @@ app.post('/thoughts', function (req, res) {
   });
 });
 
+// app.put('/thoughts/:id', function (req, res) {
+//   var thoughtId = parseInt(req.params.id);
+//   var foundThought = _.findWhere(thoughts, {id: thoughtId});
+//   foundThought.thought = req.body.thought;
+//   res.json(foundThought);
+// });
+
+
+
+
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('server started on locahost:3000');
