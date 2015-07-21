@@ -53,30 +53,33 @@ thoughtsTemplate: _.template($('#thoughtsTemplate').html()),
       $('#listOfThoughts').append($thoughtsHTML); 
     });
   },
+    
 
-  // update: function(thoughtId, updatedThought) {
-  //   $.ajax({
-  //     type: 'PUT',
-  //     url: '/thoughts/' + thoughtId,
-  //     data: {
-  //       thoughtText: updatedThought
-  //     },
-  //     success: function(data) 
-  //       var updatedThought = data; 
-  //             // pass thought object through template and append to view
-  //       var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(data));
-  //       $('#thought-' + thoughtId).replaceWith($thoughtsHTML);
-  //     })
-  //   })
-
+// update: function (thoughtId, updatedThought) {
+//   $.ajax({
+//     type: 'PUT',
+//     url: '/thoughts/' + thoughtId,
+//     data: {
+//       thoughtText: updatedThought
+//     },
+//     success: function (data)
+//     var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(data));
+//     $('#thought-' + thoughtId).replaceWith($thoughtsHTML);
+//   });
+// },
 
 
+  addEventHandlers: function() {
+    $('#listOfThoughts')
+      // for update: submit event on `.updatedThought` form
+      .on('submit', '.updatedComment', function(event) {
+        event.preventDefault();
+        var thoughtId = $(this).closest('.thought').attr('.data-id');
+        var updatedThought = $(this).find('.updatedThought').val();
+        thoughtsController.update(thoughtId, updatedThought);
+      })
+  },
 
-
-
-
-
-  
 
   setupView: function() {
     //existing thoughts onto the page 

@@ -33,14 +33,12 @@
   <div class="container">
     <div class="row">
 
-
   <!--  LEFT SIDE WITH JAPJI SAHIB -->
      <div class="col-md-7">
       <!-- data with the pauris will go here.  -->
       <h2>japji sahib.</h2>
       <div id="paurisList"></div>
     </div>
-
 
   <!-- RIGHT SIDE WITH THE COMMENT FORM -->     
       <div class="col-md-5" id="thoughtsForm">
@@ -64,12 +62,7 @@
       <div class="col-md-5" id="postedThoughts">
         <h2>other thoughts.</h2>
         <div id="listOfThoughts"></div>
-
-          //pencil would need to pop up a form which would autofill which with current text - save button - generate the new post 
-          //click the x - delete request
-
       </div>
-   
 
     <!-- END OF CONTAINER & ROW -->
     </div>
@@ -98,34 +91,45 @@
 
 <!-- PASSING THE THOUGHTS THROUGH THE TEMPLATE ONTO THE PAGE -->
 <script type="text/template" id="thoughtsTemplate">
+ <div class="thought panel panel-default" id="thought-<%= _id %>" data-id="<%= _id %>">
+ 
+ <!-- this is calling the class .thought & styling
+ id="thought-<%= _id %>" GIVING EACH THOUGHT AN ID
+ data-id="<%= _id %>" GIVING EACH DATA AN ID? -->
+ 
+ <div class="panel-body">
 
+  
   <p><%= thoughtText %></p>
 
+    <span class="my-button-group">
+    <!-- PENCIL BUTTON-->
+    <a class="edit-pencil" role="button" data-toggle="collapse" data-target="#update-<%= _id %>">
+      <span class="glyphicon glyphicon-pencil edit"></span>
+    </a>
 
-  // <!-- PENCIL BUTTON-->
-  // <a class="edit-pencil" data-toggle="collapse" data-target="#update-<%= thoughtText %>">
-  <button type="button" class="btn btn-default btn-sm">
-    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
-  </button>
-  // </a>
-
-  // <div class="collapse" id="update-<%= thoughtText %>">
-  //    <br>
-  //    <form class="form-inline updatedThought">
-  //      <input type="text" class="form-control updatedThought" value="<%= thoughtText %>" placeholder="does this work?">
-  //      <input type="submit" class="btn btn-success" value="share your thoughts.">
-  //    </form>
-  //  </div>
-
-  // <!-- REMOVE BUTTON-->
-  <button type="button" class="btn btn-default btn-sm">
-    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
-  </button>
+    <!-- REMOVE BUTTON-->
+    <button class="close right-side delete-post" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </span>
 
 
+  <div class="collapse" id="update-<%= _id %>" >
+   <br>
+   <form class="form-inline updatedComment">
 
+     <input type="text" class="form-control updatedThought" value="<%= thoughtText %>" placeholder="does this work?">
+     
+     <input type="submit" class="btn btn-success" value="update your thoughts.">
+
+   </form>
+ </div>
+
+
+</div>
+</div>
 </script>
-
 
 
 </body>
