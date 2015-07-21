@@ -97,38 +97,33 @@
  id="thought-<%= _id %>" GIVING EACH THOUGHT AN ID
  data-id="<%= _id %>" GIVING EACH DATA AN ID? -->
  
- <div class="panel-body">
-
+  <div class="panel-body">
   
-  <p><%= thoughtText %></p>
+    <p><%= thoughtText %></p>
 
     <span class="my-button-group">
-    <!-- PENCIL BUTTON-->
-    <a class="edit-pencil" role="button" data-toggle="collapse" data-target="#update-<%= _id %>">
-      <span class="glyphicon glyphicon-pencil edit"></span>
-    </a>
+      <!-- PENCIL BUTTON-->
+      <a class="edit-pencil" role="button" data-toggle="collapse" data-target="#update-<%= _id %>">
+        <span class="glyphicon glyphicon-pencil edit"></span>
+      </a>
+      <!-- REMOVE BUTTON-->
+      <button class="close right-side deleteComment" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </span>
 
-    <!-- REMOVE BUTTON-->
-    <button class="close right-side delete-post" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </span>
-
-
-  <div class="collapse" id="update-<%= _id %>" >
-   <br>
-   <form class="form-inline updatedComment">
-
-     <input type="text" class="form-control updatedThought" value="<%= thoughtText %>" placeholder="does this work?">
-     
-     <input type="submit" class="btn btn-success" value="update your thoughts.">
-
-   </form>
- </div>
+    <!-- FORM TO UPDATE A COMMENT-->
+    <div class="collapse" id="update-<%= _id %>" >
+     <br>
+     <form class="form-inline updatedComment">
+       <input type="text" class="form-control updatedThought" value="<%= thoughtText %>" placeholder="does this work?">
+       <input type="submit" class="btn btn-success" value="update your thoughts.">
+     </form>
+    </div>
 
 
-</div>
-</div>
+    </div>
+  </div>
 </script>
 
 

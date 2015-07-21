@@ -58,11 +58,10 @@ app.post('/thoughts', function (req, res) {
   });
 });
 
-
-
-
+//UPDATE FUNCTION // DOES NOT WORK //
 app.put('/thoughts/:id', function (req, res) {
   var targetId = req.params.id;
+
   Thought.findOne({_id: targetId}, function (err, foundThought) {
     foundThought.thoughtText = req.body.thoughtText;
 
@@ -72,10 +71,14 @@ app.put('/thoughts/:id', function (req, res) {
   });
 });
 
+//DELETE FUNCTION
+app.delete('/thoughts/:id', function (req, res) {
+  var targetId = req.params.id; 
 
-
-
-
+  Thought.findOneAndRemove({_id: targetId}, function (err, deletedThought) {
+    res.json(deletedThought);
+    });
+});
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('server started on locahost:3000');

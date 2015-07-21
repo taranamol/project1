@@ -54,7 +54,7 @@ thoughtsTemplate: _.template($('#thoughtsTemplate').html()),
     });
   },
     
-
+// UPDATE FUNCTION // DOES NOT WORK //
 // update: function (thoughtId, updatedThought) {
 //   $.ajax({
 //     type: 'PUT',
@@ -62,12 +62,22 @@ thoughtsTemplate: _.template($('#thoughtsTemplate').html()),
 //     data: {
 //       thoughtText: updatedThought
 //     },
-//     success: function (data)
+//     success: function(data)
 //     var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(data));
 //     $('#thought-' + thoughtId).replaceWith($thoughtsHTML);
 //   });
 // },
 
+  delete: function (thoughtId) {
+    //sending a request to the server to delete the thought
+    $.ajax ({
+      type: 'DELETE',
+      url: '/thoughts/' + thoughtId,
+      success: function(data) {
+        $('#thought-' + thoughtId).remove();
+      } 
+    });
+  },
 
   addEventHandlers: function() {
     $('#listOfThoughts')
@@ -78,8 +88,13 @@ thoughtsTemplate: _.template($('#thoughtsTemplate').html()),
         var updatedThought = $(this).find('.updatedThought').val();
         thoughtsController.update(thoughtId, updatedThought);
       })
+      // for delete on the .deleteComment button
+      .on('click', '.deleteComment', function(event) {
+        event.preventDefault();
+        var thoughtId = $(this).closest('.thought').attr('.data-id');
+        thoughtsController.delete(thoughtId);
+      });
   },
-
 
   setupView: function() {
     //existing thoughts onto the page 
