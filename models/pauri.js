@@ -5,9 +5,18 @@ var mongoose = require('mongoose'),
 // define pauri schema
 var PauriSchema = new Schema({
   pid: Number,
-  gurmukhi: String,
+  gurmukhi: String
+  
+  // thoughts: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref:'Thought'
+  // }]
+
 });
 
 // create and export Pauri model
 var Pauri = mongoose.model('Pauri', PauriSchema);
 module.exports = Pauri;
+
+
+

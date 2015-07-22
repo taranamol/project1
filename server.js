@@ -2,30 +2,82 @@ var express = require('express')
   app = express(),
   bodyParser = require('body-parser'),
   _=require('underscore'),
-  mongoose = require('mongoose');
+  mongoose = require('mongoose'),
+  session = require('express-session');
 
-// tell app to use bodyParser middleware
-app.use(bodyParser.urlencoded({extended: true}));
+var bcrypt = require('bcrypt'),
+  salt = bcrypt.genSaltSync(10);
 
-//connecting the css/js to the server.js
-app.use(express.static(__dirname + '/public'));
-
+mongoose.connect(
+  process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/Granth'
+  // plug in the db name 
+);
 // connecting the pauris to the model which is going to grab the information 
 // from mongoose & bring it back from db
 var Pauri = require('./models/pauri');
-
 var Thought = require('./models/thought'); 
+
+// tell app to use bodyParser middleware
+app.use(bodyParser.urlencoded({extended: true}));
+//connecting the css/js to the server.js
+app.use(express.static(__dirname + '/public'));
 
 //this is going to send the html to the root
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
-mongoose.connect(
-  process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://localhost/Granth'// plug in the db name you've been using
-);
+
+// //CONFIGURE SESSION
+// app.use(session({
+//   saveUninitialized: true,
+//   resave: true,
+//   secret: 'SuperSecretCookie',
+//   cookie: { maxAge: 60000 }
+// }));
+
+// /////MIDDLEWARE
+// // middleware to manage sessions
+// app.use('/', function (req, res, next) {
+//   // saves userId in session for logged-in user
+//   req.login = function (user) {
+//     req.session.userId = user.id;
+//   };
+
+//   // finds user currently logged in based on `session.userId`
+//   req.currentUser = function (callback) {
+//     User.findOne({_id: req.session.userId}, function (err, user) {
+//       req.user = user;
+//       callback(null, user);
+//     });
+//   };
+
+//   // destroy `session.userId` to log out user
+//   req.logout = function () {
+//     req.session.userId = null;
+//     req.user = null;
+//   };
+
+//   next();
+// });
+
+
+///////////////AUTH ROUTES//////////////////
+
+
+///////////////USER ROUTES//////////////////
+// create new user with secure password
+// app.post('/users', function (req, res) {
+//   var newUser = req.body.user;
+//   User.createSecure(newUser, function (err, user) {
+//     // log in user immediately when created
+//     req.login(user);
+//     res.redirect('/pauris'); //should this redirect to thoughts or pauris?
+//   });
+// });
+
 
 ///////////////API ROUTES//////////////////
 
@@ -71,12 +123,12 @@ app.get('/thoughts/:id', function (req, res) {
 //UPDATE FUNCTION // DOES NOT WORK //
 app.put('/thoughts/:id', function (req, res) {
   //this is undefined so it won't read the eventHandlers
-  console.log(req.params.id, "req.params.id");
+  
   var targetId = req.params.id;
-
+  console.log(req.params.id, "req.params.id");
   Thought.findOne(targetId, function (err, foundThought) {
     foundThought.thoughtText = req.body.thoughtText;
-    console.log(foundThought.thoughtText, "foundthough");
+    console.log(foundThought.thoughtText, "foundthought");
 
     foundThought.save(function (err, savedThought) {
       res.json(savedThought);

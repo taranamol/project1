@@ -62,14 +62,14 @@ var thoughtsController = {
       type: 'PUT',
       url: '/thoughts/' + thoughtId,
       data: {
-        thoughtText: $(this).find('.updatedComment').val()
+        thoughtText: updatedThought
       },
       success: function(data) {
         var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(data));
-        console.log($thoughtsHTML);
         $('#thought-' + thoughtId).replaceWith($thoughtsHTML);
       }
     });
+    console.log('success'); 
   },
 
   delete: function (thoughtId) {
@@ -90,14 +90,16 @@ var thoughtsController = {
       // for update: submit event on `.updatedThought` form
       $('#listOfThoughts').on('submit', '.updatedComment', function(event) {
         event.preventDefault();
-        var thoughtId = $(this).closest('.thought').attr('.data-id');
-        var updatedThought = $(this).find('.updatedComment').val();
+        var thoughtId = $(this).closest('.thought').attr('data-id');
+        console.log(thoughtId);
+        var updatedThought = $(this).find('.updatedThought').val();
+        console.log(updatedThought);
         thoughtsController.update(thoughtId, updatedThought);
       })
       // for delete on the .deleteComment button
       $('#listOfThoughts').on('click', '.deleteComment', function(event) {
         event.preventDefault();
-        var thoughtId = $(this).closest('.thought').attr('.data-id');
+        var thoughtId = $(this).closest('.thought').attr('data-id');
         thoughtsController.delete(thoughtId);
       });
     },
