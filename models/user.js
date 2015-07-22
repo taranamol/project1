@@ -8,7 +8,6 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
   email: String,
   passwordDigest: String,
-  // thoughts: [Thought.schema] //has-many relationship
 });
 
 // create a new user with secure (hashed) password

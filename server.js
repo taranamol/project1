@@ -60,16 +60,18 @@ app.use('/', function (req, res, next) {
   next();
 });
 
+///////////////AUTH ROUTES////////////////
+
 // login route (renders login view)
 app.get('/login', function (req, res) {
   res.sendFile(__dirname + '/login.html');
 });
 
-///////////////AUTH ROUTES////////////////
-
-app.get('/signup', function (req, res) {
-  res.send('coming soon');
-});
+// app.get('/signup', function (req, res) {
+//   res.sendFile(__dirname + '/login.html');
+//   //CHANGED THIS FROM JUST "COMING SOON"
+//   // DO I NEED THIS BECAUSE IT IS GOING TO SAME PLACE?
+// });
 
 // user submits the signup form
 app.post('/users', function (req, res) {
@@ -100,13 +102,13 @@ app.post('/login', function (req, res) {
   });
 });
 
-// // user profile page
-app.get('/profile', function (req, res) {
-  // finds user currently logged in
-  req.currentUser(function (err, user) {
-    res.send('Welcome ' + user.email);
-  });
-});
+// // // user profile page
+// app.get('/profile', function (req, res) {
+//   // finds user currently logged in
+//   req.currentUser(function (err, user) {
+//     res.send('Welcome ' + user.email);
+//   });
+// });
 
 
 ///////////////STATIC ROUTES//////////////////
@@ -118,7 +120,6 @@ app.get('/', function(req, res) {
 
 
 ///////////////API ROUTES////////////////
-
 
 ///////////////PAURIS ROUTES
 
