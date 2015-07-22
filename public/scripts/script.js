@@ -55,7 +55,6 @@ var thoughtsController = {
     });
   },
 
-    // UPDATE FUNCTION // DOES NOT WORK //
   update: function (thoughtId, updatedThought) {
     console.log('hello');
     $.ajax({
@@ -83,17 +82,15 @@ var thoughtsController = {
     });
   },
 
-  //my req.params.id is undefined so it won't read event handlers
-
   addEventHandlers: function() {
     // $('#thoughtsTemplate')
       // for update: submit event on `.updatedThought` form
       $('#listOfThoughts').on('submit', '.updatedComment', function(event) {
         event.preventDefault();
         var thoughtId = $(this).closest('.thought').attr('data-id');
-        console.log(thoughtId);
+        // console.log(thoughtId);
         var updatedThought = $(this).find('.updatedThought').val();
-        console.log(updatedThought);
+        // console.log(updatedThought);
         thoughtsController.update(thoughtId, updatedThought);
       })
       // for delete on the .deleteComment button
@@ -116,10 +113,9 @@ var thoughtsController = {
     });
   }
 
-
-
-// CLOSES THE THOUGHTSCONTROLLER
 }
+// CLOSES THE THOUGHTSCONTROLLER
+
 
 thoughtsController.setupView()
 

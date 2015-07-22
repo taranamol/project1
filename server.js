@@ -120,10 +120,8 @@ app.get('/thoughts/:id', function (req, res) {
   });
 });
 
-//UPDATE FUNCTION // DOES NOT WORK //
+//UPDATE FUNCTION 
 app.put('/thoughts/:id', function (req, res) {
-  //this is undefined so it won't read the eventHandlers
-  
   var targetId = req.params.id;
   console.log(req.params.id, "req.params.id");
   Thought.findOne(targetId, function (err, foundThought) {
@@ -137,7 +135,7 @@ app.put('/thoughts/:id', function (req, res) {
   });
 });
 
-//DELETE FUNCTION // DOES NOT WORK //
+//DELETE FUNCTION 
 app.delete('/thoughts/:id', function (req, res) {
   var targetId = req.params.id; 
 
