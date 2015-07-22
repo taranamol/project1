@@ -60,9 +60,8 @@ app.post('/thoughts', function (req, res) {
 
 //find thought by ID
 app.get('/thoughts/:id', function (req, res) {
-  // set the valueof the id
+  // set the value of the id
   var targetId = req.params.id;
-
   // find thought in db by id
   Thought.findOne({_id:targetId}, function (err, foundThought) {
     res.json(foundThought);
@@ -71,10 +70,11 @@ app.get('/thoughts/:id', function (req, res) {
 
 //UPDATE FUNCTION // DOES NOT WORK //
 app.put('/thoughts/:id', function (req, res) {
-   console.log(req.params.id, "req.params");
+  //this is undefined so it won't read the eventHandlers
+  console.log(req.params.id, "req.params");
   var targetId = req.params.id;
 
-  Thought.findOne({_id: targetId}, function (err, foundThought) {
+  Thought.findOne(targetId, function (err, foundThought) {
     foundThought.thoughtText = req.body.thoughtText;
     console.log(foundThought.thoughtText, "foundthough");
 

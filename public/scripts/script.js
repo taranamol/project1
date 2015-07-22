@@ -38,7 +38,7 @@ var thoughtsController = {
           var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(thoughts));
           // console.log($thoughtsHTML);
           $('#listOfThoughts').append($thoughtsHTML); 
-          console.log(allThoughts);
+          // console.log(allThoughts);
         });
         thoughtsController.addEventHandlers();
       });
@@ -83,7 +83,7 @@ var thoughtsController = {
     });
   },
 
-  //my req.params.id is undefined so there's a 
+  //my req.params.id is undefined so it won't read event handlers
 
   addEventHandlers: function() {
     // $('#thoughtsTemplate')
