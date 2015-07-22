@@ -58,20 +58,34 @@ app.post('/thoughts', function (req, res) {
   });
 });
 
+//find thought by ID
+app.get('/thoughts/:id', function (req, res) {
+  // set the valueof the id
+  var targetId = req.params.id;
+
+  // find thought in db by id
+  Thought.findOne({_id:targetId}, function (err, foundThought) {
+    res.json(foundThought);
+  });
+});
+
 //UPDATE FUNCTION // DOES NOT WORK //
 app.put('/thoughts/:id', function (req, res) {
+   console.log(req.params.id, "req.params");
   var targetId = req.params.id;
 
   Thought.findOne({_id: targetId}, function (err, foundThought) {
     foundThought.thoughtText = req.body.thoughtText;
+    console.log(foundThought.thoughtText, "foundthough");
 
     foundThought.save(function (err, savedThought) {
       res.json(savedThought);
+      console.log(savedThought, "savedthought");
     });
   });
 });
 
-//DELETE FUNCTION
+//DELETE FUNCTION // DOES NOT WORK //
 app.delete('/thoughts/:id', function (req, res) {
   var targetId = req.params.id; 
 

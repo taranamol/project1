@@ -8,5 +8,5 @@ var ThoughtSchema = new Schema({
 });
 
 // create and export Thoughts model
-var Thought = mongoose.model('Thought', ThoughtSchema); 
+var Thought = mongoose.model('Thought', ThoughtSchema, 'thoughts'); 
 module.exports = Thought;
