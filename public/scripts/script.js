@@ -62,14 +62,14 @@ var thoughtsController = {
       type: 'PUT',
       url: '/thoughts/' + thoughtId,
       data: {
-        thoughtText: updatedThought
+        thoughtText: $(this).find('.updatedComment').val()
       },
       success: function(data) {
         var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(data));
+        console.log($thoughtsHTML);
         $('#thought-' + thoughtId).replaceWith($thoughtsHTML);
       }
     });
-    console.log('success'); 
   },
 
   delete: function (thoughtId) {

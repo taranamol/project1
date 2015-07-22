@@ -71,7 +71,7 @@ app.get('/thoughts/:id', function (req, res) {
 //UPDATE FUNCTION // DOES NOT WORK //
 app.put('/thoughts/:id', function (req, res) {
   //this is undefined so it won't read the eventHandlers
-  console.log(req.params.id, "req.params");
+  console.log(req.params.id, "req.params.id");
   var targetId = req.params.id;
 
   Thought.findOne(targetId, function (err, foundThought) {
