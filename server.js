@@ -5,8 +5,11 @@ var express = require('express')
   mongoose = require('mongoose'),
   session = require('express-session');
 
-var bcrypt = require('bcrypt'),
-  salt = bcrypt.genSaltSync(10);
+// connecting the pauris to the model which is going to grab the information 
+// from mongoose & bring it back from db
+var Pauri = require('./models/pauri');
+var Thought = require('./models/thought'); 
+var User = require('./models/user');
 
 mongoose.connect(
   process.env.MONGOLAB_URI ||
@@ -14,77 +17,112 @@ mongoose.connect(
   'mongodb://localhost/Granth'
   // plug in the db name 
 );
-// connecting the pauris to the model which is going to grab the information 
-// from mongoose & bring it back from db
-var Pauri = require('./models/pauri');
-var Thought = require('./models/thought'); 
 
 // tell app to use bodyParser middleware
 app.use(bodyParser.urlencoded({extended: true}));
 //connecting the css/js to the server.js
 app.use(express.static(__dirname + '/public'));
 
-//this is going to send the html to the root
+
+//////CONFIGURE SESSION
+// set session options
+app.use(session({
+  saveUninitialized: true,
+  resave: true,
+  secret: 'SuperSecretCookie',
+  cookie: { maxAge: 60000 }
+}));
+
+
+/////////////////MIDDLEWARE
+
+// middleware to manage sessions
+app.use('/', function (req, res, next) {
+  // saves userId in session for logged-in user
+  req.login = function (user) {
+    req.session.userId = user.id;
+  };
+
+  // finds user currently logged in based on `session.userId`
+  req.currentUser = function (callback) {
+    User.findOne({_id: req.session.userId}, function (err, user) {
+      req.user = user;
+      callback(null, user);
+    });
+  };
+
+  // destroy `session.userId` to log out user
+  req.logout = function () {
+    req.session.userId = null;
+    req.user = null;
+  };
+
+  next();
+});
+
+// login route (renders login view)
+app.get('/login', function (req, res) {
+  res.sendFile(__dirname + '/login.html');
+});
+
+///////////////AUTH ROUTES////////////////
+
+app.get('/signup', function (req, res) {
+  res.send('coming soon');
+});
+
+// user submits the signup form
+app.post('/users', function (req, res) {
+
+  // grab user data from params (req.body)
+  var newUser = req.body.user;
+
+  // create new user with secure password
+  User.createSecure(newUser.email, newUser.password, function (err, user) {
+    res.send(user);
+  });
+});
+
+
+// user submits the login form
+app.post('/login', function (req, res) {
+
+  // grab user data from params (req.body)
+  var userData = req.body.user;
+
+  // call authenticate function to check if password user entered is correct
+  User.authenticate(userData.email, userData.password, function (err, user) {
+    // saves user id to session
+    req.login(user);
+
+    // redirect to user profile
+    res.redirect('/');
+  });
+});
+
+// // user profile page
+app.get('/profile', function (req, res) {
+  // finds user currently logged in
+  req.currentUser(function (err, user) {
+    res.send('Welcome ' + user.email);
+  });
+});
+
+
+///////////////STATIC ROUTES//////////////////
+
+//SEND HTML TO ROOT - HOMEPAGE
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
 
-// //CONFIGURE SESSION
-// app.use(session({
-//   saveUninitialized: true,
-//   resave: true,
-//   secret: 'SuperSecretCookie',
-//   cookie: { maxAge: 60000 }
-// }));
-
-// /////MIDDLEWARE
-// // middleware to manage sessions
-// app.use('/', function (req, res, next) {
-//   // saves userId in session for logged-in user
-//   req.login = function (user) {
-//     req.session.userId = user.id;
-//   };
-
-//   // finds user currently logged in based on `session.userId`
-//   req.currentUser = function (callback) {
-//     User.findOne({_id: req.session.userId}, function (err, user) {
-//       req.user = user;
-//       callback(null, user);
-//     });
-//   };
-
-//   // destroy `session.userId` to log out user
-//   req.logout = function () {
-//     req.session.userId = null;
-//     req.user = null;
-//   };
-
-//   next();
-// });
+///////////////API ROUTES////////////////
 
 
-///////////////AUTH ROUTES//////////////////
+///////////////PAURIS ROUTES
 
-
-///////////////USER ROUTES//////////////////
-// create new user with secure password
-// app.post('/users', function (req, res) {
-//   var newUser = req.body.user;
-//   User.createSecure(newUser, function (err, user) {
-//     // log in user immediately when created
-//     req.login(user);
-//     res.redirect('/pauris'); //should this redirect to thoughts or pauris?
-//   });
-// });
-
-
-///////////////API ROUTES//////////////////
-
-
-///////////////PAURIS ROUTES////////////////
-
-//this is /get route which will get all the pauris in the server
+//GET ALL PAURIS
 app.get('/pauris', function (req, res) {
   Pauri.find(function (err, pauri) {
     res.json(pauri);
@@ -92,15 +130,16 @@ app.get('/pauris', function (req, res) {
 });
 
 
-///////////////THOUGHTS ROUTES////////////////
+///////////////THOUGHTS ROUTES
 
-//this is /get route which will get all the thoughts in the server
+//GET ALL THOUGHTS
 app.get('/thoughts', function (req, res) {
   Thought.find(function (err, thought) {
     res.json(thought);
   });
 });
 
+//CREATE THOUGHT 
 app.post('/thoughts', function (req, res) {
   var newThought = new Thought ({
     thoughtText: req.body.thoughtText
@@ -110,7 +149,7 @@ app.post('/thoughts', function (req, res) {
   });
 });
 
-//find thought by ID
+//FIND THOUGHT BY ID FUNCTION
 app.get('/thoughts/:id', function (req, res) {
   // set the value of the id
   var targetId = req.params.id;
