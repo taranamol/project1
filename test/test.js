@@ -1,6 +1,9 @@
-var Thought = require("../script.js"); //importing the script.js
-var request = require('request')
-  , expect = require('chai').expect
+var request = require('request'),
+    expect = require('chai').expect
+    baseUrl = 'http://localhost:3000/', 
+    baseUrlLogin = 'http://localhost:3000/login',
+    user = {email: "testemail", password: "password"};
+    
 
 // DESCRIBE WHAT WE ARE TESTING
   // SAY WHAT BEHAVIOR 'IT' AUGHT TO HAVE
@@ -19,14 +22,23 @@ describe('Google.com', function() {
   })
 });
 
-describe("testing the add function", function() {
-  it("should add a thought", function(done) {
-    var newThought = new Thought();
-    
-    newThought.add("hello this is a test");
-    
-    expect(myLib.all().length).equal(1);
-    // expect(myLib.all()[].id).equal(1);
-    done();
+//static route to home page
+describe('GET /', function() {
+  it('should return statusCode 200', function(done) {
+    request(baseUrl, function(error, response, body) {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
+  });
+});
+
+
+//static route to login page
+describe('GET /login', function() {
+  it('should return statusCode 200', function(done) {
+    request(baseUrlLogin + '/login', function(error, response, body) {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
   });
 });

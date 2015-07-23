@@ -10,8 +10,10 @@ body > div.jumbotron > p {
 }
 
 .jumbotron {
-  background-color: #FFD34E;
+  background-color: rgba(0, 110, 164, 0.3);
   text-align: center;
+  color: #F2F2F2;
+
 }
 
 /*LOG IN FORM*/
