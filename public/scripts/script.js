@@ -1,5 +1,6 @@
 $(function() {
 
+// $.backstretch("http://blog.jimdo.com/wp-content/uploads/2014/01/tree-247122.jpg");
 
 // APPENDING THE PAURIS ONTO THE PAGE
 var paurisController = {
