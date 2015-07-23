@@ -25,21 +25,54 @@ paurisTemplate: _.template($('#paurisTemplate').html()),
           });
         });
       });
-    }
+    },
+
+   
+
+
+
+    // addEventHandlers: function() {
+    // // $('#thoughtsTemplate')
+    //   // for update: submit event on `.updatedThought` form
+    //   $('#submitButton').on('submit', function(event) {
+    //     console.log('submitThought');
+    //     event.preventDefault();
+    //     var thoughtId = $(this).closest('.thought').attr('data-id');
+    //     // console.log(thoughtId);
+    //     var updatedThought = $(this).find('.updatedThought').val();
+    //     // console.log(updatedThought);
+    //     thoughtsController.update(thoughtId, updatedThought);
+    //   })
+    //   // for delete on the .deleteComment button
+    //   $('#listOfThoughts').on('click', '.deleteComment', function(event) {
+    //     event.preventDefault();
+    //     var thoughtId = $(this).closest('.thought').attr('data-id');
+    //     thoughtsController.delete(thoughtId);
+    //   });
+    // },
+
+    setupView: function() {
+    //existing thoughts onto the page 
+    paurisController.all()
+
+    $('#submitThought').on('submit', function(event) {
+      event.preventDefault();
+      var thoughtText = $('#thought').val();
+      console.log(thoughtText);
+      thoughtsController.all(thoughtText);
+    });
+  } 
+
+
   };
 
-   create: function(newThought) {
-      var thoughtData = {thoughtText: newThought};
-      console.log(thoughtData);
-    // this is creating a a request to the server to create a new thought 
-    $.post('/pauris', thoughtData, function(data) {
-      //passing through the thoughtTemplate to show the thought on the page
-      var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(data));
-      $('.listOfThoughts[data-id=' + pauri._id + ']').append($thoughtHTML); 
-    });
-  },
-
   paurisController.all();
+
+      $('#submitThought').click (function(e) {
+        e.preventDefault();
+        console.log('submitThought');
+  
+  });
 
 
 // APPENDING THE THOUGHTS ONTO THE PAGE
@@ -130,6 +163,8 @@ var thoughtsController = {
       thoughtsController.create(thoughtText);
     });
   }
+
+
 
 }
 // CLOSES THE THOUGHTSCONTROLLER

@@ -127,6 +127,18 @@ app.post('/pauris/:id/thoughts', function(req, res) {
   });
 });
 
+// app.post('/pauris/:id/thoughts', function (req, res) {
+//   get closest id 
+//   closest id = targetId
+//   targetId.findOne({_id:targetId}, function (err, foundThought) {
+//   });
+//    Pauri.findOne({_id:targetId}, function (err, foundPauri) {
+//     foundPauri.thoughts.push(newThought)
+//     foundPauri.save(function (err, foundPauri) {
+//       res.json(newThought);
+// }
+
+
 ///////////////THOUGHTS ROUTES
 
 //GET ALL THOUGHTS
