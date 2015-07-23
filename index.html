@@ -20,13 +20,13 @@
   </div>
 
   <!-- NAVIGATION -->
-  <div class="navbar">
+<!--   <div class="navbar">
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <p>  </p>
       </div>
     </nav>
-  </div>
+  </div> -->
 
 
   <div class="container">
@@ -46,7 +46,7 @@
 
           <!-- COMMENT FORM --> 
           <div class="form-group">
-            <input type="text" class="form-control" id="thoughtText" placeholder="what are your thoughts?" autofocus>
+            <input type="text" class="form-control" id="thoughtText" placeholder="what are your thoughts?" autofocus required>
           </div>
 
           <!-- SUBMIT BUTTON -->
@@ -66,7 +66,7 @@
     <!-- END OF CONTAINER & ROW -->
     </div>
   </div>
-  
+
 
 <!-- jquery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
@@ -83,10 +83,9 @@
 <!-- PASSING THE PAURIS FROM THE DATABASE THROUGH THE TEMPLATE ONTO THE PAGE -->
 <script type="text/template" id="paurisTemplate">
   <p>
-    <%= pid %> - <%= gurmukhi %> 
+    <%= pid %> - <%= gurmukhi %> </br>
+   
   </p>
-
-
 
 </script>
 

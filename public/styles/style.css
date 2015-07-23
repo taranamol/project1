@@ -17,16 +17,31 @@ font-family: 'GurbaniAkharHeavyRegular';
 src: url('GURAKH_H.TTF') format('truetype')
 }
 
+/*HEADING OF THE PAURI*/
+body > div.container > div > div.col-md-7 > h2 {
+  background-color: rgba(0,0,0,0.7);
+  color: #F2F2F2;
+}
+
 #paurisList{
 font-family: 'GurbaniAkharHeavyRegular';
 font-size: 20px;
-background-color: #F2F2F2; 
+background-color: rgba(0,0,0,0.7);
+color: #F2F2F2;
 }
+
 
 #thoughtsForm {
   background-color: #105B63; 
   text-decoration: #F2F2F2;
 }
+
+/*LOG IN FORM*/
+body > div.container.text-center > div > div {
+  background-color: rgba(0,0,0,0.7);
+  color: #F2F2F2;
+}
+
 
 
 
