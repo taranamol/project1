@@ -1,16 +1,15 @@
 // require mongoose
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    Thought = require('./thought'); 
+
 
 // define pauri schema
 var PauriSchema = new Schema({
   pid: Number,
-  gurmukhi: String
+  gurmukhi: String,
   
-  // thoughts: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref:'Thought'
-  // }]
+  thoughts: [Thought.schema]
 
 });
 
