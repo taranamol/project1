@@ -25,54 +25,11 @@ paurisTemplate: _.template($('#paurisTemplate').html()),
           });
         });
       });
-    },
+    }
 
-   
+};
 
-
-
-    // addEventHandlers: function() {
-    // // $('#thoughtsTemplate')
-    //   // for update: submit event on `.updatedThought` form
-    //   $('#submitButton').on('submit', function(event) {
-    //     console.log('submitThought');
-    //     event.preventDefault();
-    //     var thoughtId = $(this).closest('.thought').attr('data-id');
-    //     // console.log(thoughtId);
-    //     var updatedThought = $(this).find('.updatedThought').val();
-    //     // console.log(updatedThought);
-    //     thoughtsController.update(thoughtId, updatedThought);
-    //   })
-    //   // for delete on the .deleteComment button
-    //   $('#listOfThoughts').on('click', '.deleteComment', function(event) {
-    //     event.preventDefault();
-    //     var thoughtId = $(this).closest('.thought').attr('data-id');
-    //     thoughtsController.delete(thoughtId);
-    //   });
-    // },
-
-    setupView: function() {
-    //existing thoughts onto the page 
-    paurisController.all()
-
-    $('#submitThought').on('submit', function(event) {
-      event.preventDefault();
-      var thoughtText = $('#thought').val();
-      console.log(thoughtText);
-      thoughtsController.all(thoughtText);
-    });
-  } 
-
-
-  };
-
-  paurisController.all();
-
-      $('#submitThought').click (function(e) {
-        e.preventDefault();
-        console.log('submitThought');
-  
-  });
+paurisController.all();
 
 
 // APPENDING THE THOUGHTS ONTO THE PAGE
