@@ -83,21 +83,50 @@
 <!-- custom scripts -->
 <script type="text/javascript" src="scripts/script.js"></script>
 
-<!--   with listOfThoughts in paurisTemplate
+<!-- with listOfThoughts in paurisTemplate
  --> <!-- we have a class listofThought where it's actually going to append the thoughts & the data id is grabbing the verse so it knows where to go--> 
 
 <!-- PASSING THE PAURIS FROM THE DATABASE THROUGH THE TEMPLATE ONTO THE PAGE -->
 <script type="text/template" id="paurisTemplate">
-  <p>
-<div class="col-md-7">
-    <%= pid %> - <%= gurmukhi %> </br> 
-  </div>
-  </p>
-  <div class="col-md-5">
-    <div class="listOfThoughts" data-id="<%= _id %>"></div>
+
+
+<div class="col-md-7" id="justPauri">
+  <p> <%= pid %> - <%= gurmukhi %> </p>
+</div>
+
+
+ 
+ <div class="col-md-7"
+  <form id="submitThought">
+
+      <div class="form-group">
+        <input type="text" class="form-control" id="thoughtText" placeholder="what are your thoughts?" autofocus required>
+      </div>
+
+     <div class="form-group">
+        <input type="submit" class="btn btn-success" value="share your thoughts.">
+        </div>
+
+  </form>
   </div>
 
+
+
+<div class="col-md-5" id="justThought">
+    <div class="listOfThoughts" data-id="<%= _id %>"></div>
+</div>
+
+
+
+
+
 </script>
+
+
+
+
+
+
 
 <!-- PASSING THE THOUGHTS THROUGH THE TEMPLATE ONTO THE PAGE -->
 <script type="text/template" id="thoughtsTemplate">

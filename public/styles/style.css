@@ -20,11 +20,15 @@ body > div.jumbotron > p {
 }
 
 
-#paurisList{
+#justPauri{
   font-family: 'GurbaniAkharHeavyRegular';
   font-size: 20px;
   /*background-color: rgba(0,0,0,0.7);
   */color: #000000;
+}
+
+#justThought {
+  color: #0000FF;
 }
 
 

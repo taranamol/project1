@@ -28,6 +28,17 @@ paurisTemplate: _.template($('#paurisTemplate').html()),
     }
   };
 
+   create: function(newThought) {
+      var thoughtData = {thoughtText: newThought};
+      console.log(thoughtData);
+    // this is creating a a request to the server to create a new thought 
+    $.post('/pauris', thoughtData, function(data) {
+      //passing through the thoughtTemplate to show the thought on the page
+      var $thoughtsHTML = $(thoughtsController.thoughtsTemplate(data));
+      $('.listOfThoughts[data-id=' + pauri._id + ']').append($thoughtHTML); 
+    });
+  },
+
   paurisController.all();
 
 
