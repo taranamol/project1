@@ -1,0 +1,24 @@
+body {
+  font-family: sans-serif;
+  background-image: url("http://blog.jimdo.com/wp-content/uploads/2014/01/tree-247122.jpg");
+   background-attachment: fixed;
+}
+
+body > div.jumbotron > p {
+    font-size: 30px;
+}
+
+.jumbotron {
+  background-color: #FFD34E;
+  text-align: center;
+}
+
+/*LOG IN FORM*/
+body > div.container.text-center > div > div {
+  background-color: rgba(0, 110, 164, 0.3);
+  color: #F2F2F2;
+}
+
+h3 {
+    font-family: sans-serif;
+}
