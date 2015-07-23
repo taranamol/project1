@@ -11,12 +11,18 @@ paurisTemplate: _.template($('#paurisTemplate').html()),
       console.log("calling all");
       $.get('/pauris', function(data) {
         var allPauris = data;
-        _.each(allPauris, function(pauris) {
+        _.each(allPauris, function(pauri) {
           //append the pauris so they appear on the page
-          var $paurisHtml = $(paurisController.paurisTemplate(pauris));
+          var $pauriHtml = $(paurisController.paurisTemplate(pauri));
           // console.log($paurisHtml);
-          $('#paurisList').append($paurisHtml); 
+          $('#paurisList').append($pauriHtml); 
           // console.log(allPauris);
+          _.each(pauri.thoughts, function(thought) {
+            var $thoughtHTML = $(thoughtsController.thoughtsTemplate(thought));
+          //with the listOfThoughts with a certain data-id with the id of the pauri
+          $('.listOfThoughts[data-id=' + pauri._id + ']').append($thoughtHTML); 
+          // console.log(allThoughts);
+          });
         });
       });
     }

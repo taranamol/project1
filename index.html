@@ -33,35 +33,35 @@
     <div class="row">
 
   <!--  LEFT SIDE WITH JAPJI SAHIB -->
-     <div class="col-md-7">
+     <!-- <div class="col-md-7"> -->
       <!-- data with the pauris will go here.  -->
       <!-- <h2>japji sahib.</h2> -->
       <div id="paurisList"></div>
-    </div>
-
+<!--     </div>
+ -->
   <!-- RIGHT SIDE WITH THE COMMENT FORM -->     
-      <div class="col-md-5" id="thoughtsForm">
+ <!--      <div class="col-md-5" id="thoughtsForm">
       <h1>thoughts?</h1>
         <form id="submitThought">
-
+ -->
           <!-- COMMENT FORM --> 
-          <div class="form-group">
+    <!--       <div class="form-group">
             <input type="text" class="form-control" id="thoughtText" placeholder="what are your thoughts?" autofocus required>
-          </div>
+          </div> -->
 
           <!-- SUBMIT BUTTON -->
-          <div class="form-group">
+   <!--        <div class="form-group">
             <input type="submit" class="btn btn-success" value="share your thoughts.">
           </div>
 
         </form>
-      </div>
+      </div> -->
 
   <!-- RIGHT SIDE WITH POSTED THOUGHTS -->
-      <div class="col-md-5" id="postedThoughts">
+<!--       <div class="col-md-5" id="postedThoughts">
         <h2>other thoughts.</h2>
         <div id="listOfThoughts"></div>
-      </div>
+      </div> -->
 
     <!-- END OF CONTAINER & ROW -->
     </div>
@@ -83,12 +83,20 @@
 <!-- custom scripts -->
 <script type="text/javascript" src="scripts/script.js"></script>
 
+<!--   with listOfThoughts in paurisTemplate
+ --> <!-- we have a class listofThought where it's actually going to append the thoughts & the data id is grabbing the verse so it knows where to go--> 
+
 <!-- PASSING THE PAURIS FROM THE DATABASE THROUGH THE TEMPLATE ONTO THE PAGE -->
 <script type="text/template" id="paurisTemplate">
   <p>
+<div class="col-md-7">
     <%= pid %> - <%= gurmukhi %> </br> 
-   
+  </div>
   </p>
+  <div class="col-md-5">
+    <div class="listOfThoughts" data-id="<%= _id %>"></div>
+  </div>
+
 </script>
 
 <!-- PASSING THE THOUGHTS THROUGH THE TEMPLATE ONTO THE PAGE -->
