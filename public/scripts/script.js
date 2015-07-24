@@ -1,28 +1,61 @@
 $(function() {
 
-// $.backstretch("http://blog.jimdo.com/wp-content/uploads/2014/01/tree-247122.jpg");
-
 // APPENDING THE PAURIS ONTO THE PAGE
 var paurisController = {
 
-paurisTemplate: _.template($('#paurisTemplate').html()),
+  paurisTemplate: _.template($('#paurisTemplate').html()),
 
-    all: function() {
-      console.log("calling all");
-      $.get('/pauris', function(data) {
-        var allPauris = data;
-        _.each(allPauris, function(pauris) {
+  all: function() {
+    console.log("calling all");
+    $.get('/pauris', function(data) {
+      var allPauris = data;
+      _.each(allPauris, function(pauri) {
           //append the pauris so they appear on the page
-          var $paurisHtml = $(paurisController.paurisTemplate(pauris));
+          var $pauriHtml = $(paurisController.paurisTemplate(pauri));
           // console.log($paurisHtml);
-          $('#paurisList').append($paurisHtml); 
+          $('#paurisList').append($pauriHtml); 
           // console.log(allPauris);
+          _.each(pauri.thoughts, function(thought) {
+            var $thoughtHTML = $(thoughtsController.thoughtsTemplate(thought));
+          //with the listOfThoughts with a certain data-id with the id of the pauri
+          $('.listOfThoughts[data-id=' + pauri._id + ']').append($thoughtHTML); 
+          // console.log(allThoughts);
         });
-      });
-    }
-  };
+        });
+    });
+  },
 
-  paurisController.all();
+  create: function(newThought, pauriId) {
+    var thoughtData = {thoughtText: newThought};
+    console.log(thoughtData); { 
+       // this is creating a a request to the server to create a new thought 
+       $.post('/pauris/'+pauriId+'/thoughts', thoughtData, function(data) {
+         //passing through the thoughtTemplate to show the thought on the page
+         var $thoughtHTML = $(thoughtsController.thoughtsTemplate(data));
+         //with the listOfThoughts with a certain data-id with the id of the pauri
+         $('.listOfThoughts[data-id=' + pauriId+ ']').append($thoughtHTML); 
+       });}
+     },
+
+     setupView: function() {
+      console.log("setupView");
+    //existing thoughts onto the page 
+    paurisController.all()
+
+    $('#paurisList').on('submit', ".submitThought", function(event) {
+      console.log("sub");
+      event.preventDefault();
+      var thoughtText = $(this).find('.thoughtText').val();
+      var pauriId = $(this).attr('data-id');
+      console.log(thoughtText);
+      paurisController.create(thoughtText, pauriId);
+    });
+  }
+
+};
+//CLOSES PAURI CONTROLLER 
+
+paurisController.setupView();
 
 
 // APPENDING THE THOUGHTS ONTO THE PAGE
@@ -114,9 +147,9 @@ var thoughtsController = {
     });
   }
 
+
 }
 // CLOSES THE THOUGHTSCONTROLLER
-
 
 thoughtsController.setupView()
 
