@@ -11,8 +11,10 @@ body > div.jumbotron > p {
 
 .jumbotron {
   background-color: rgba(0, 110, 164, 0.3);
+
   color: #F2F2F2;
-  text-align: center;
+
+
 }
 
 
