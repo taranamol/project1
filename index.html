@@ -91,31 +91,32 @@
 <script type="text/template" id="paurisTemplate">
 
 
-<div class="col-md-7" id="justPauri">
+<div class="col-md-7 justPauri">
   <p> <%= pid %> - <%= gurmukhi %> </p>
 </div>
 
 
  
- <div class="col-md-7"
-  <form id="submitThought">
+ <div class="col-md-7">
+  <form class="submitThought" data-id="<%= _id %>">
 
       <div class="form-group">
-        <input type="text" class="form-control" id="thoughtText" placeholder="what are your thoughts?" autofocus required>
+        <input type="text" class="form-control thoughtText" placeholder="what are your thoughts?" autofocus required>
       </div>
 
-     <div class="form-group" id="submitButton">
+     <div class="form-group">
         <input type="submit" class="btn btn-success" value="share your thoughts.">
-        </div>
+      </div>
 
   </form>
-  </div>
+</div>
 
 
 
-<div class="col-md-5" id="justThought">
+<div class="col-md-5 justThought">
     <div class="listOfThoughts" data-id="<%= _id %>"></div>
 </div>
+
 
 
 
