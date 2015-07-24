@@ -1,30 +1,35 @@
 body {
   font-family: sans-serif;
-  background-image: url("http://blog.jimdo.com/wp-content/uploads/2014/01/tree-247122.jpg");
+  background-image: url("http://www.bespokepixels.co.uk/code/parallax/parallax.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
+
 
 body > div.jumbotron > p {
   font-size: 30px;
 }
 
+
 .jumbotron {
-  background-color: rgba(0, 110, 164, 0.3);
-
+  background-color: rgba(42, 30, 20, 0.4);;
   color: #F2F2F2;
+  text-align: center;
+  padding: 0.5em 0.6em;
+}
 
-
+.jumbotron p {
+  font-size: 1em;
 }
 
 
 /*LOG IN FORM*/
 body > div.container.text-center > div > div {
-  background-color: rgba(0, 110, 164, 0.3);
+  background-color: rgba(42, 30, 20, 0.4);
   color: #F2F2F2;
-  margin-bottom: 50px;
-
+  margin-bottom: 30px;
 }
+
 
 h3 {
   font-family: sans-serif;

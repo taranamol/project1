@@ -1,6 +1,6 @@
 body {
-  background-color: #f7f7f7;
   font-family: sans-serif;
+  background-color: #f7f7f7;
   background-attachment: fixed;
 }
 
@@ -9,9 +9,14 @@ body > div.jumbotron > p {
 }
 
 .jumbotron {
-  background-color: rgba(42, 30, 20, 0.4);
-  color: #000000;
+  background-color: rgba(42, 30, 20, 0.4);;
+  color: #F2F2F2;
   text-align: center;
+  padding: 0.5em 0.6em;
+}
+
+.jumbotron p {
+  font-size: 1em;
 }
 
 @font-face{ 
@@ -23,13 +28,28 @@ body > div.jumbotron > p {
 .justPauri{
   font-family: 'GurbaniAkharHeavyRegular';
   font-size: 20px;
-  /*background-color: rgba(0,0,0,0.7);
-  */color: #000000;
+  background-color: rgba(42, 30, 20, 0.4);
+  color: #F2F2F2;
 }
 
 .justThought {
   color: #000000;
 }
+
+
+#paurisList  {
+  background-color: rgba(42, 30, 20, 0.4);
+  color: #F2F2F2;
+}
+
+body > div.container > div > h2 {
+  background-color: rgba(42, 30, 20, 0.4);
+  color: #F2F2F2;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
 
 
 /*.thoughtsForm {

@@ -1,5 +1,7 @@
 $(function() {
 
+$.backstretch("http://www.bespokepixels.co.uk/code/parallax/parallax.jpg");
+
 // APPENDING THE PAURIS ONTO THE PAGE
 var paurisController = {
 
