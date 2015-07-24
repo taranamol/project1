@@ -90,12 +90,9 @@
 <!-- PASSING THE PAURIS FROM THE DATABASE THROUGH THE TEMPLATE ONTO THE PAGE -->
 <script type="text/template" id="paurisTemplate">
 
-
 <div class="col-md-7 justPauri">
   <p> <%= pid %> - <%= gurmukhi %> </p>
 </div>
-
-
  
  <div class="col-md-7">
   <form class="submitThought" data-id="<%= _id %>">
@@ -111,24 +108,11 @@
   </form>
 </div>
 
-
-
 <div class="col-md-5 justThought">
     <div class="listOfThoughts" data-id="<%= _id %>"></div>
 </div>
 
-
-
-
-
-
 </script>
-
-
-
-
-
-
 
 <!-- PASSING THE THOUGHTS THROUGH THE TEMPLATE ONTO THE PAGE -->
 <script type="text/template" id="thoughtsTemplate">
@@ -157,7 +141,7 @@
     <div class="collapse" id="update-<%= _id %>" data-id="<%= _id %>">
      <br>
      <form class="form-inline updatedComment">
-       <input type="text" class="form-control updatedThought" value="<%= thoughtText %>" placeholder="does this work?">
+       <input type="text" class="form-control updatedThought" value="<%= thoughtText %>" placeholder="update your comment?">
        <input type="submit" class="btn btn-success" value="update your thoughts.">
      </form>
     </div>

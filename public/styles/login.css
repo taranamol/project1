@@ -6,22 +6,25 @@ body {
 }
 
 body > div.jumbotron > p {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .jumbotron {
-  background-color: #FFD34E;
+  background-color: rgba(0, 110, 164, 0.3);
+  color: #F2F2F2;
   text-align: center;
 }
+
 
 /*LOG IN FORM*/
 body > div.container.text-center > div > div {
   background-color: rgba(0, 110, 164, 0.3);
   color: #F2F2F2;
   margin-bottom: 50px;
+
 }
 
 h3 {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
