@@ -31,12 +31,14 @@
 
   <div class="container">
     <div class="row">
+      <button class='btn btn-success pull-right' id='button'> Hide/Show Comments</button>
 
   <!--  LEFT SIDE WITH JAPJI SAHIB -->
      <!-- <div class="col-md-7"> -->
       <!-- data with the pauris will go here.  -->
       <h2>JAPJI SAHIB</h2>
       <div id="paurisList"></div>
+
 <!--     </div>
  -->
   <!-- RIGHT SIDE WITH THE COMMENT FORM -->     
@@ -90,7 +92,7 @@
 <!-- PASSING THE PAURIS FROM THE DATABASE THROUGH THE TEMPLATE ONTO THE PAGE -->
 <script type="text/template" id="paurisTemplate">
 
-<div class="col-md-7 justPauri">
+<div class="col-md-7 justPauri" id='justPauri'>
   <p> <%= pid %> - <%= gurmukhi %> </p>
 </div>
  
@@ -98,18 +100,17 @@
   <form class="submitThought" data-id="<%= _id %>">
 
       <div class="form-group">
-        <input type="text" class="form-control thoughtText" placeholder="what are your thoughts?" autofocus required>
+        <input type="text" class="form-control thoughtText" id='thoughtText' placeholder="what are your thoughts?" autofocus required>
       </div>
-
      <div class="form-group">
         <input type="submit" class="btn btn-success" value="share your thoughts.">
       </div>
-
   </form>
+
 </div>
 
 <div class="col-md-5 justThought">
-    <div class="listOfThoughts" data-id="<%= _id %>"></div>
+    <div class="listOfThoughts" id='listOfThoughts' data-id="<%= _id %>"></div>
 </div>
 
 </script>
