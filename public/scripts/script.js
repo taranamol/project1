@@ -17,11 +17,20 @@ var paurisController = {
           // console.log($paurisHtml);
           $('#paurisList').append($pauriHtml); 
           // console.log(allPauris);
+
+          // $('#justPauri').click(function(){
+          //   $('#listOfThoughts').toggle();
+          // });
+
           _.each(pauri.thoughts, function(thought) {
             var $thoughtHTML = $(thoughtsController.thoughtsTemplate(thought));
           //with the listOfThoughts with a certain data-id with the id of the pauri
           $('.listOfThoughts[data-id=' + pauri._id + ']').append($thoughtHTML); 
           // console.log(allThoughts);
+
+            $('button').click(function(){
+              $('.listOfThoughts').toggle();
+            });
         });
         });
     });
